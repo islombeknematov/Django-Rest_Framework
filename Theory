@@ -1,0 +1,6 @@
+request.POST --> Handles form data. Only works for 'POST' method.
+request.data --> Handles arbitrary data. Works for 'POST', 'PUT', 'PATCH' methods
+
+
+
+

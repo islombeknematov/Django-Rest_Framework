@@ -3,7 +3,7 @@ from rest_framework import serializers
 from snippets.models import SnippetModel, LANGUAGE_CHOICES, STYLE_CHOICES
 
 
-class SnippetModelSerializer(serializers.Serializer):
+class SnippetModelSerializers(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(required=False, allow_blank=True, max_length=100)
     code = serializers.CharField(style={'base_template': 'textarea.html'})
@@ -29,6 +29,14 @@ class SnippetModelSerializer(serializers.Serializer):
 
         instance.save()
         return instance
+
+
+class SnippetModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SnippetModel
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style']
+
+
 
 
 
